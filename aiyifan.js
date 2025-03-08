@@ -76,16 +76,14 @@
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 12px;
-    font-weight: lighter;">微信支付</button>
+    font-size: 12px;">微信支付</button>
                     <button id="alipayDonate" style="
     padding: 8px 12px 6px 12px;
     background-color: #007aff;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 12px;
-    font-weight: lighter;">支付宝支付</button>
+    font-size: 12px;">支付宝支付</button>
                 `;
                 adDiv.appendChild(donateContainer);
 
