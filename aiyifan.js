@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ou3-爱一帆手机版（去广告）
 // @namespace    https://m.iyf.tv
-// @version      1.24
+// @version      1.25
 // @description  自动跳过广告，并添加捐赠按钮
 // @author       You
 // @match         https://*.iyf.tv/*
@@ -19,20 +19,22 @@
                 // 跳过广告并设置视频为静音
                 adPlayer_.video.currentTime = adPlayer_.video.duration;
                 adPlayer_.video.volume = 0;
+                clearInterval(timer);
                 console.log("广告跳过");
                 
             }
-            if (adPlayer_.video.volume > 0.1) {
-                adPlayer_.video.volume = 0.1;
+            if (adPlayer_.video.volume > 0) {
+                adPlayer_.video.volume = 0;
             }
         }
     }
 
-    setInterval(jumpad, 1000);
+    
+    let timer = setInterval(jumpad, 1000);
 
     // 3. 监听 DOM 变化，删除广告元素
     const removeAds = () => {
-        jumpad();
+        timer = setInterval(jumpad,1000);
         const adDivs = document.querySelectorAll('.ad');
         if (adDivs && adDivs.length > 0) {
             var adDiv = adDivs[0];
