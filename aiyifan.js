@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         ou3-爱一帆手机版（去广告）
 // @namespace    https://m.iyf.tv
-// @version      1.02
+// @version      1.04
 // @description  自动跳过广告，并添加捐赠按钮
 // @author       You
-// @match         https://m.iyf.tv/*
+// @match         https://*.iyf.tv/*
 // @grant        none
 // @license      Proprietary
 // ==/UserScript==
@@ -13,16 +13,26 @@
     'use strict';
 
     console.log("🚀 Tampermonkey 脚本已启动，正在屏蔽广告...");
+    const jumpad = function () {
+
+        if (window.adPlayer_ && adPlayer_.video) {
+            if (adPlayer_.video.duration > 3 && adPlayer_.video.volume > 0) {
+                // 跳过广告并设置视频为静音
+                adPlayer_.video.currentTime = adPlayer_.video.duration;
+                adPlayer_.video.volume = 0;
+                console.log("广告跳过");
+            }
+            if (adPlayer_.video.volume > 0) {
+                adPlayer_.video.volume = 0.1;
+            }
+        }
+    }
+
+    setInterval(jumpad, 1000);
 
     // 3. 监听 DOM 变化，删除广告元素
     const removeAds = () => {
-         if (window.adPlayer_ && adPlayer_.video && adPlayer_.video.duration > 3 && adPlayer_.video.volume > 0) {
-            // 跳过广告并设置视频为静音
-            adPlayer_.video.currentTime = adPlayer_.video.duration;
-            adPlayer_.video.volume = 0;
-            adPlayer_.play();
-            console.log("广告跳过");
-        }
+        jumpad();
         const adDivs = document.querySelectorAll('.ad');
         if (adDivs && adDivs.length > 0) {
             var adDiv = adDivs[0];
@@ -34,6 +44,7 @@
             // 创建捐赠按钮容器
             const donateContainer = document.createElement('div');
             donateContainer.style.display = 'ruby-text';
+            donateContainer.style.marginTop="10px";
             donateContainer.innerHTML = `
                     <p style="color: #999; font-size: 14px;border-left: 3px solid #999;padding-left: 6px;">捐一杯咖啡</p>
                     <button id="wechatDonate" style="margin: 10px;
@@ -55,7 +66,7 @@
         }
     };
 
-    
+
     // 5. 监听 DOM 变化，防止广告重新插入
     const observer = new MutationObserver(removeAds);
     observer.observe(document.body, { childList: true, subtree: true });
