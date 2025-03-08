@@ -61,7 +61,7 @@
             display: none !important;
         }
         .van-image .image {
-            background-image: url('https://yourdomain.com/path/to/your-image.jpg');
+            background-image: url('https://github.com/oukoukyou/ou3.m.iyf.tv/blob/main/202309130910101070268-fotor-2025030815549.png');
             background-size: cover;
             width: 100%;
             height: 100%;
