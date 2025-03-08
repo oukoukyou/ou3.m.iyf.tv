@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ou3-爱一帆手机版（去广告）
 // @namespace    https://m.iyf.tv
-// @version      1.05
+// @version      1.06
 // @description  自动跳过广告，并添加捐赠按钮
 // @author       You
 // @match         https://*.iyf.tv/*
@@ -15,7 +15,7 @@
     console.log("🚀 Tampermonkey 脚本已启动，正在屏蔽广告...");
     const jumpad = function () {
         if (adPlayer_ && adPlayer_.video) {
-            adPlayer_.video.addEventListener('timeupdate', () => {
+            adPlayer_.video.addEventListener('loadedmetadata', () => {
                 // 跳过广告并设置视频为静音
                 if (adPlayer_.video.duration - adPlayer_.video.currentTime > 3) {
                     adPlayer_.video.currentTime = adPlayer_.video.duration;
