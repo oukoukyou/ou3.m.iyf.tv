@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ou3-爱一帆手机版（去广告）
 // @namespace    https://m.iyf.tv
-// @version      1.27
+// @version      1.28
 // @description  自动跳过广告，并添加捐赠按钮
 // @author       You
 // @match         https://*.iyf.tv/*
@@ -19,6 +19,7 @@
                 adPlayer_.video.currentTime = adPlayer_.video.duration;
                 adPlayer_.video.volume = 0;
                 clearInterval(timer);
+                timer = null;
                 console.log("广告跳过");
                 
             }
