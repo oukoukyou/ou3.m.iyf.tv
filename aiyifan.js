@@ -2,7 +2,7 @@
 // @name         ou3-爱一帆手机版（去广告）
 // @namespace    https://m.iyf.tv
 // @version      1.29
-// @description  // @description 自动跳过爱一帆视频广告，提高观看体验，支持 iyf.tv
+// @description  自动跳过爱一帆视频广告，提高观看体验，支持 iyf.tv
 // @author       You
 // @match         https://*.iyf.tv/*
 // @grant        none
