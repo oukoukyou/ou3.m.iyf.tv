@@ -69,9 +69,23 @@
                 const donateContainer = document.createElement('div');
                 donateContainer.style.display = 'ruby-text';
                 donateContainer.innerHTML = `
-                    <p style="color: #999;font-size: 13px;">开发不易，支持作者一杯卡布奇诺.</p>
-                    <button id="wechatDonate" style="margin: 10px; padding: 10px 20px; background-color: #00bb2d; color: white; border: none; border-radius: 5px;">微信支付</button>
-                    <button id="alipayDonate" style="margin: 10px; padding: 10px 20px; background-color: #007aff; color: white; border: none; border-radius: 5px;">支付宝支付</button>
+                    <p style="color: #999; font-size: 14px;border-left: 3px solid #999;padding-left: 6px;">捐一杯咖啡</p>
+                    <button id="wechatDonate" style="margin: 10px;
+    padding: 8px 12px 6px 12px;
+    background-color: #00bb2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: lighter;">微信支付</button>
+                    <button id="alipayDonate" style="
+    padding: 8px 12px 6px 12px;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: lighter;">支付宝支付</button>
                 `;
                 adDiv.appendChild(donateContainer);
 
@@ -161,7 +175,7 @@
         // 创建二维码图像
         const qrImage = document.createElement('img');
         qrImage.src = imgUrl;
-        qrImage.style.height = '80vh';
+        qrImage.style.height = '40vh';
         qrImage.style.marginBottom = '20px';
 
         // 把内容添加到弹出框
